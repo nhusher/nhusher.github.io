@@ -1,0 +1,78 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN"
+   "http://www.w3.org/TR/html4/strict.dtd">
+
+<html lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<title>nickol.us | Nicholas Husher | Web Design &amp; Development</title>
+	<link rel="stylesheet" type="text/css" href="../assets/css/reset.css">
+	<link rel="stylesheet" type="text/css" href="../assets/css/style.css">
+</head>
+<body>
+	<div id="container">
+		<div id="masthead">
+			<h1>Nicholas Husher: Web Design &amp; Development</h1>
+		</div>
+		<div id="menu-bar">
+			<a class="blog menu-option" href="http://blog.nickol.us">
+				<span>Blog</span>
+			</a>
+			<a class="twitter menu-option" href="http://twitter.com/teslanick">
+				<span>Twitter</span>
+			</a>
+			<a class="flickr menu-option" href="http://www.flickr.com/photos/nickolus/">
+				<span>Flickr</span>
+			</a>
+			<a class="code menu-option" href="./code.html">
+				<span>Code</span>
+			</a>
+			<span class="portfolio menu-option">
+				<span>Portfolio</span>
+			</span>
+		</div>
+		<div id="someday"></div>
+		
+		<div id="content-container" class="text asteroids">
+			<div class="hd"></div>
+
+			<div class="bd">
+				<div class="hd"></div>
+				<div class="bd">
+					<h1>Asteroids</h1>
+					<p>Recently, I entered a clone of the classic game <em>Asteroids</em> in the <a href="http://10k.aneventapart.com/Entry/313">10k Apart</a> web development contest. The premise of the contest is to design the best mini front-end web application possible in 10 kilobytes or less. A daunting task to be sure, but I resolved to do something that I had never done before and  I learned a lot in the process. Below is a basic rundown on how it's constructed.</p>
+					<p>I should say at the outset that I'm terrible at Asteroids. I always have been. My motivation for building an Asteroids clone was to try to get in the heads of the early game programmers. They worked very hard to make the most out of extremely limited resources and, in a way, 10k Apart is like climbing into a time machine to the late 70s. You have a big screen, a slow electron gun, no memory, and a slow processor: now make a game.</p>
+					<h2>Compression</h2>
+					<p>The game code is written with compressibility in mind. I use the YUI Compressor to minify and rewrite the code, and I tried to tune my code as much as possible to take advantage of the strengths of the compressor. I drew heavily from <a href="http://yuiblog.com/blog/2008/02/11/helping-the-yui-compressor">this YUIBlog</a> entry by Nicholas Zakas. I also did a lot of comparison between my inputs and outputs: if I saw that there were a lot of return statements in the output, I tried to rewrite the code to minimize those statements, since they can't be minified.</p>
+					<p>One thing that took up a lot of space in the early builds was the pointmaps. These are sets of XY coordinates for drawing the elements in the game. The ships, text, asteroids, and effects are all arrays of XY pairs. For example, here's the code for the spaceship:</p>
+					<code>
+						<span>[</span>
+						<span>	[[0,-10], [-8,5], [-7,8], [7,8], [8,5]], <span class="comment">// the hull</span></span>
+						<span>	[[-2,2],[2,2],[3,0],[0,-5],[-3,0]] <span class="comment">// the cockpit bubble</span></span>
+						<span>]</span>
+					</code>
+					<p>Even without spaces, this takes up a ton of room. And the ship isn't even all that complex. The most expensive glyph I ended up including is the "8" character, which is both rounded and has two parts to it. So I devised a way to encode the XY coordinates in something more compact.</p>
+					<p>I figured that I could eliminate the square brackets and commas and just have a string of <code>X1Y1X2Y2X3Y3...XNYN</code>. In cases where there are multiple components to an element (such as the ship's hull and cockpit), I separated the two segments with a colon. It would only work if each coordinate was a fixed width, so I encoded the points in something similar to Base64, but with an easier-to-write algorithm. The result of compressing the above looks like this: <code>'gWYlZonool:eiiijggbdg'</code></p>
+					<p>When the script interpreter passes over the element point map when it begins execution, it calls the <code>F_DECODE</code> function, which returns them to their original nested array format. This adds up-front computation time, but reduced my overall size by 3-5%.</p>
+					<h2>PNG Encoding</h2>
+					<p>During the build process the whole program is encoded into a PNG8 using a PHP script I found in the comments on <a href="http://blog.nihilogic.dk/2008/05/compression-using-canvas-and-png.html">this entry</a>. The script required some modification to get working the way I wanted it to, but it reduced the overall script size by between 30 and 40 percent.</p>
+					<p>The encoder works by looping through each character in the (pre-minified) file and reading its ASCII value. There are 255 characters in the ASCII character set--each ASCII character is defined with 8 bits--which is perfect because a 32-bit image stores 8 bits per channel. So the encoder reads the ASCII value and then writes a pixel to a new image file where the RGB value is equal to the ASCII value (repeated 3 times, once for each color). The end result is an image that looks like this:</p>
+					<p><img src="./asteroids/ast.png" alt="Asteroids Code Map" /></p>
+					<p>The code is compressed because when PHP writes out as a PNG file, it has built in mechanisms for compressing the pixel data. The interface for writing images lets you place pixels on a point-by-point basis, but the file format stores those pixels in an extremely efficient manner. Basically, whatever compression PNG offers to a large image, it also offers to a small code file.</p>
+					<p>The data is then decoded by a function in the index.html that instantiates a canvas, writes the code/image to it, and then reads the pixel data out of the image and converts it back into ASCII characters. The resultant string is then eval()'d and executed. A nifty trick but really, really bad practice in a production environment.</p>
+					<h2>The Sound</h2>
+					<p>Sound was the biggest thing I wanted to include, and also the biggest pain to get working. I know very little about how sound is stored and what a big or little sound file would be. I also had no idea what kind of support I'd find across browsers, and early research proved discouraging.</p>
+					<p>Audio compatibility cross-browser is atrocious and wildly inconsistent. Firefox doesn't support MP3, Chrome doesn't support WAV, the other browsers are all over the map. Of the big two standards-compliant browser engines, neither Firefox/Gecko nor Webkit/Chrome are likely to change their positions on those file formats anytime soon. Tickets entered into the Chromium project are turned down or ignored and Firefox won't support MP3 for similar reasons as why it won't support H.264 (MP3 is supposedly license-encumbered).</p>
+					<p>After a great deal of deliberation, I decided to drop WAV. The file format is totally uncompressed and was consuming twice as much space as the LAME-encoded MP3 was. My friend <a href="http://jeffreypierce.net/portfolio/">Jeffrey Pierce</a> hooked me up with some awesome simulacra of the original Asteroids sound effects in super-compressed MP3 format. He knows the dark arts of sound compression, and got the sound down under 3kb.</p>
+					<p>But wait! There was a huge bug that only manifested itself when I uploaded it to a remote server. Moving from alpha to beta, I started testing it over a slower wire to see what would happen. All the sounds were delayed by a small--but noticeable--duration. Checking the activity log, Chrome was hitting the server any time it wanted to play a sound. It wouldn't re-download the sound, but it would still hit the server and wouldn't play until it got a response.</p>
+					<p>I suppose this is a feature rather than a bug: if you have a long audio file, you aren't going to notice an 80ms delay after you hit the play button. And the browser is just trying to make sure it has the latest version of the file, so it waits for a response, even if it's a 304 NOT MODIFIED. But my sound files are 150ms long, and I have this aching chasm between when the sound should play, and when it actually does.</p>
+					<p>So I had to figure out a way to include the sound without hitting the server. Using a <a href="http://en.wikipedia.org/wiki/Data_URI_scheme">Data URI</a> seemed like an obvious choice. I then wrote a shell script that interacts with an encoding library that pours the Base64 audio data into a javascript file and prepends that to my main game file. One unfortunate side effect is that I believe this broke any possible sound compatibility with IE9 in its current state. The number of elements that support Data URIs in IE9 is vanishingly small, and I suspect that Audio is one of the ones where it is not (yet? I hope?) supported.</p>
+				</div>
+				<div class="ft"></div>
+			</div>
+			<div class="ft"></div>
+		</div>
+		
+		<div id="otter"></div>
+	</div>
+</body>
+</html>
