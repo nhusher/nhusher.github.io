@@ -46,7 +46,7 @@
       margin: 0;
       padding: 0.5rem;
     }
-    li a::before {
+    li a.i::before {
       display: inline-block;
       font-size: 200%;
       vertical-align: middle;
@@ -54,29 +54,33 @@
     }
     
     
-    .asteroids a::before {
+    .asteroids a.i::before {
       font-family: "entypo";
       content: "\1F680";
     }
     
-    .blog a::before {
+    .blog a.i::before {
       font-family: "entypo";
       content: "\2712";
     }
     
-    .twitter a::before {
+    .twitter a.i::before {
       font-family: "entypo-social";
       content: "\F309";
     }
     
-    .github a::before {
+    .github a.i::before {
       font-family: "entypo-social";
       content: "\F300";
     }
     
-    .esc a::before {
+    .esc a.i::before {
       font-family: "entypo";
       content: "\2630";
+    }
+    
+    .esc a.doc {
+      font-family: "entypo";
     }
 	</style>
 </head>
@@ -85,17 +89,17 @@
   <p>UI developer extraordinaire.</p>
   <ul>
 	  <li class="twitter">
-		  <a href="http://twitter.com/teslanick">twitter</a>
+		  <a class="i" href="http://twitter.com/teslanick">twitter</a>
 	  </li>
 	  <li class="github">
-		  <a href="http://github.com/nhusher">github</a>
+		  <a class="i" href="http://github.com/nhusher">github</a>
 	  </li>
 	  <li class="asteroids">
-		  <a href="/asteroids">asteroids</a>
+		  <a class="i" href="/asteroids">asteroids</a>
 	  </li>
 	  <li class="esc">
-		  <a href="http://eve-ship-comparator.herokuapp.com/?merlin&punisher&rifter&tristan">esc</a>
-		  (<a href="http://nickol.us/eve-ship-comparator/apidocs" class="doc">&#128213;</a>)
+		  <a class="i" href="http://eve-ship-comparator.herokuapp.com/?merlin&punisher&rifter&tristan">esc</a>
+		  (<a class="doc" href="http://nickol.us/eve-ship-comparator/apidocs">&#128213;</a>)
 	  </li>
 	  <li>
 		  <a href="./cv.pdf">cv</a>
