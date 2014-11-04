@@ -1,0 +1,117 @@
+
+html, body {
+  font-family: Lato;
+  font-weight: 300;
+}
+
+header {
+  background: #eee;
+  text-align: center;
+  font-family: Lato;
+}
+
+header h1 {
+  max-width: 40rem;
+  margin: 0 auto;
+  font-weight: 300;
+  font-size: 300%;
+  letter-spacing: -0.05em;
+}
+
+header .important-sounding-descriptors {
+  max-width: 40rem;
+  list-style: none;
+  margin: 0 auto;
+  padding: 0;
+}
+
+header .important-sounding-descriptors li {
+  display: inline-block;
+  padding: 0.5rem;
+}
+
+nav {
+  display: none;
+}
+
+section {
+  max-width: 42rem;
+  margin: 0 auto;
+  padding: 0 1rem;
+  position: relative;
+}
+
+section + section::before {
+  content: "";
+  display: block;
+  width: 25rem;
+  margin: 0 auto;
+  padding: 0;
+  border-top: 1px solid #ccc;
+}
+
+
+#skills ul {
+  -webkit-column-width: 33%;
+  -webkit-column-count: 3;
+  list-style-type: none;
+  margin: 0;
+  padding: 0.5rem 0;
+  text-align: center;
+}
+
+#skills ul li {
+  padding: 0.1rem 0;
+}
+
+#professional-experience ol {
+  list-style: none;
+  margin: 0;
+  padding: 1rem 0;
+}
+
+#professional-experience ol > li + li {
+  margin-top: 1rem;
+}
+
+#professional-experience h3 {
+  margin: 0;
+}
+
+#professional-experience h3 .employer {
+  font-weight: 300;
+  display: inline-block;
+  margin-left: 1rem;
+}
+
+#professional-experience .job-info {
+  margin: 0 2rem;
+  font-size: 90%;
+}
+
+#professional-experience .job-location {
+  font-weight: bolder;
+  margin-right: 1rem;
+}
+
+#education dt {
+  font-size: 110%;
+}
+
+#education dd {
+  margin: 0 2rem;
+}
+
+#education dd + dt {
+  margin-top: 1rem;
+}
+
+#education .institution {
+  font-weight: bolder;
+  margin-right: 1rem;
+}
+
+#education .location {
+  margin-right: 1rem;
+}
+
