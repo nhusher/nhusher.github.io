@@ -2,6 +2,7 @@
 html, body {
   font-family: Lato;
   font-weight: 300;
+  padding-bottom: 5rem;
 }
 
 header {
@@ -103,6 +104,10 @@ section + section::before {
 #professional-experience .job-location {
   font-weight: bolder;
   margin-right: 1rem;
+}
+
+#professional-experience ul > li + li {
+  margin-top: 0.4rem;
 }
 
 #education dt {
