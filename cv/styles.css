@@ -88,12 +88,14 @@ section + section::before {
 
 #professional-experience h3 {
   margin: 0;
+  break-after: avoid;
 }
 
 #professional-experience h3 .employer {
   font-weight: 300;
   display: inline-block;
   margin-left: 1rem;
+  break-after: avoid;
 }
 
 #professional-experience .job-info {
@@ -108,6 +110,11 @@ section + section::before {
 
 #professional-experience ul > li + li {
   margin-top: 0.4rem;
+}
+
+#professional-experience p {
+  orphans: 5;
+  widows: 5;
 }
 
 #education dt {
@@ -131,3 +138,6 @@ section + section::before {
   margin-right: 1rem;
 }
 
+@media print {
+  
+}
