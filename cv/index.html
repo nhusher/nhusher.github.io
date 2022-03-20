@@ -10,47 +10,34 @@
         rel="stylesheet" />
   <link href="./styles.css"
         rel="stylesheet" />
+
 </head>
 <body>
   <header>
     <h1>Nicholas Husher</h1>
     <ul class="important-sounding-descriptors">
-      <li>User Interface Developer</li>
+      <li>Full Stack Developer</li>
       <li>Javascript Enthusiast</li>
       <li>Code Wicche</li>
     </ul>
   </header>
   <nav>
+    <!-- Nav is visually hidden. -->
     <ol>
-      <li><a href="#summary">Summary</a></li>
       <li><a href="#skills">Skills</a></li>
       <li><a href="#professional-experience">Experience</a></li>
       <li><a href="#education">Education</a></li>
     </ol>
   </nav>
-  <section id="summary">
-    <h2>Summary</h2>
-    <p>
-      I've been designing and building user interfaces since 2007. My career
-      has been defined by building and maintaining complex front-end
-      applications alongside many contributors. I also can bring my computer
-      science education to bear on backend development, aiding in business
-      logic, infrastructure, and data model design. I'm a polyglot developer: I
-      appreciate the opportunity to experiment with new languages and
-      approaches.
-    </p>
-  </section>
   <section id="skills">
     <h2>Skills</h2>
     <ul>
-      <li>Javascript / ES6</li>
-      <li>Rich client app design</li>
+      <!-- NTS: the number of list items should divide by three. -->
+      <li>ES2022 / TypeScript</li>
+      <li>SPA application design</li>
       <li>HTML5</li>
-      <li>CSS / SCSS</li>
+      <li>CSS</li>
       <li>Clojure</li>
-      <li>Java</li>
-      <li>GIS / Mapping</li>
-
       <li>Node / npm</li>
       <li>React / React Native</li>
       <li>Redux / Redux Saga</li>
@@ -58,14 +45,12 @@
       <li>GraphQL</li>
       <li>Git</li>
       <li>SQL</li>
-
       <li>Docker</li>
       <li>Client-side security</li>
       <li>Functional programming</li>
       <li>Scrum / Kanban</li>
       <li>UNIX / OS X</li>
       <li>Microservices / REST</li>
-      <li>IntelliJ Idea</li>
     </ul>
   </section>
   <section id="professional-experience">
@@ -73,7 +58,10 @@
     <ol>
       <li>
         <article>
-          <h3><span class="job-title">Engineer-at-large</span> <span class="employer">Faraday</span></h3>
+          <h3>
+            <span class="job-title">Frontend Lead</span>
+            <span class="employer">Faraday</span>
+          </h3>
           <div class="job-info">
             <span class="job-location">Remote in Boston, MA</span>
             <time datetime="2015-01-05">January 2015</time> &ndash; Present
@@ -95,13 +83,49 @@
       </li>
       <li>
         <article>
-          <h3><span class="job-title">Software Architect</span> <span class="employer">Lola Travel</span></h3>
+          <h3>
+            <span class="job-title">Staff Software Engineer</span>
+            <span class="employer">Indigo Agriculture</span>
+          </h3>
           <div class="job-info">
             <span class="job-location">Boston, MA</span>
-            <time datetime="2016-07-21">January 2017</time> &ndash; <time datetime="2017-08-01">August 2017</time>
+            <time datetime="2019-06-05">June 2019</time> &ndash;
+            <time datetime="2020-10-01">October 2020</time>
           </div>
           <p>
-            Lola Travel is a startup that is building lightweight, user-focused
+            Indigo Agriculture is trying to improve the market for commodity
+            grain. This takes two main forms: first, they offer an organic
+            microbial seed treatment that can improve crop yields by incresing
+            drought tolerance and pest resistance; and second, by offering an
+            online marketplace for farmers to sell their crops directly to
+            food companies, rather than selling to grain clearing houses.
+          </p>
+          <p>
+            I worked on a few different projects while at Indigo: The first
+            was a React Native version of the Indigo marketplace application,
+            designed to load faster and work better in areas with poor cellular
+            data availability; The second was leading a team to do
+            architectural cleanup of some low-level code in the Marketplace UI
+            application, which was dragging down developer productivity;
+            Finally, I worked on a team to provide an accessible, consistent,
+            and forward-looking UI component library for Indigo web
+            applications.
+          </p>
+        </article>
+      </li>
+      <li>
+        <article>
+          <h3>
+            <span class="job-title">Software Architect</span>
+            <span class="employer">Lola Travel</span>
+          </h3>
+          <div class="job-info">
+            <span class="job-location">Boston, MA</span>
+            <time datetime="2016-07-21">January 2017</time> &ndash;
+            <time datetime="2017-08-01">August 2017</time>
+          </div>
+          <p>
+            Lola Travel was a startup that that built lightweight, user-focused
             travel software for small businesses.
           </p>
           <p>
@@ -111,24 +135,29 @@
             administrators within a company may use to track and manage
             business trips that employees have booked, and a web application
             that Lola agents use to provide support to the other two apps,
-            served by a graphql endpoint.
+            served by a GraphQL endpoint.
           </p>
         </article>
       </li>
       <li>
         <article>
-          <h3><span class="job-title">Senior Engineer</span> <span class="employer">Pwnie Express</span></h3>
+          <h3>
+            <span class="job-title">Senior Engineer</span>
+            <span class="employer">Pwnie Express</span>
+          </h3>
           <div class="job-info">
             <span class="job-location">Boston, MA</span>
-            <time datetime="2016-07-21">June 2016</time> &ndash; <time datetime="2016-12-21">December 2016</time>
+            <time datetime="2016-07-21">June 2016</time> &ndash;
+            <time datetime="2016-12-21">December 2016</time>
           </div>
           <p>
-            Pwnie Express provides vulnerability and threat detection software.
-            They use custom-designed sensors to detect devices connected to a
-            network and wireless devices that are adjacent to the network like
-            cell phones, bluetooth devices, wireless printers, or credit card
-            skimmers. These devices are categorized and indexed, and can be 
-            investigated using their web application.
+            Pwnie Express provided vulnerability and threat detection software.
+            They used custom-designed sensors to detect devices connected to a
+            network, and wireless devices that are adjacent to the network,
+            like cell phones, bluetooth devices, wireless printers, or credit
+            card skimmers. These devices were categorized and indexed in a
+            cloud-based database, which could be queried and navigated from a
+            browser-based webapp.
           </p>
           <p>
             My job was threefold: I worked with other developers to implement
@@ -144,28 +173,15 @@
       </li>
       <li>
         <article>
-          <h3><span class="job-title">Senior User Interface Developer</span> <span class="employer">Dealer.com / Dealertrack</span></h3>
+          <h3>
+            <span class="job-title">Senior User Interface Developer</span>
+            <span class="employer">Dealer.com / Dealertrack</span>
+          </h3>
           <div class="job-info">
             <span class="job-location">Burlington, VT</span>
-            <time datetime="2010-12-29">December 2010</time> &ndash; <time datetime="2015-01-02">January 2015</time>
+            <time datetime="2010-12-29">December 2010</time> &ndash;
+            <time datetime="2015-01-02">January 2015</time>
           </div>
-          <p>
-            Dealer.com provides software as a service for car dealerships. Their
-            primary offering is dynamic website design, powered by rules-based
-            inventory pricing and A/B testing. They were acquired by DealerTrack
-            in 2014, which was subsequently acquired by Cox Automotive in 2015.
-          </p>
-          <p>
-            I was one of four founding members of a team tasked with building
-            the best-possible automotive CRM system, implemented in enterprise
-            Java, Groovy, and Grails. I worked with industry experts to solve
-            complex user experience problems, and worked to connect the backend
-            of the CRM to the company's Hadoop-based analytics solution. I also
-            helped lay down the cornerstones of a new "common container"
-            project that sought to unify the UI codebases of many Dealer.com
-            and Dealertrack properties into something more consistent, usable,
-            and performant.
-          </p>
         </article>
       </li>
       <li>
@@ -173,7 +189,8 @@
           <h3><span class="job-title">Web Developer</span> <span class="employer">Bear Code</span></h3>
           <div class="job-info">
             <span class="job-location">Montpelier, VT</span>
-            <time datetime="2006-05-30">May 2006</time> &ndash; <time datetime="2010-12-29">December 2010</time>
+            <time datetime="2006-05-30">May 2006</time> &ndash;
+            <time datetime="2010-12-29">December 2010</time>
           </div>
         </article>
       </li>
