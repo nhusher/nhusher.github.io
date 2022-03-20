@@ -1,15 +1,43 @@
+@font-face {
+  font-family: "Merriweather";
+  src: url("./Merriweather-Light.ttf") format("truetype");
+  font-weight: 300;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Merriweather";
+  src: url("./Merriweather-Regular.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+:root {
+  --font-size: 16px;
+  --text-color: #675232;
+  --background-color: #F6F4F4;
+}
 
 html, body {
-  font-family: Lato;
+  font-family: Merriweather, serif;
   font-weight: 300;
-  font-size: 16px;
+  font-size: var(--font-size);
   padding-bottom: 5rem;
   line-height: 1.5;
+  margin: 0;
+  color: var(--text-color);
+  background-color: var(--background-color);
+}
+
+/**
+ * Turn down the weight on these elements a little.
+ **/
+h3, strong {
+  font-weight: bolder;
 }
 
 header {
-  background: #eee;
   text-align: center;
+  padding: 1rem 0;
 }
 
 header h1 {
@@ -48,16 +76,6 @@ section > h2 {
   display: none;
 }
 
-section + section::before {
-  content: "";
-  display: block;
-  width: 25rem;
-  margin: 0 auto;
-  padding: 0;
-  border-top: 1px solid #ccc;
-}
-
-
 #skills ul {
   -webkit-column-width: 33%;
   -webkit-column-count: 3;
@@ -84,20 +102,22 @@ section + section::before {
   padding: 1rem 0;
 }
 
+#professional-experience ol > li {
+  break-inside: avoid-page
+}
+
 #professional-experience ol > li + li {
   margin-top: 1.5rem;
 }
 
 #professional-experience h3 {
   margin: 0;
-  break-after: avoid;
 }
 
 #professional-experience h3 .employer {
   font-weight: 300;
   display: inline-block;
   margin-left: 1rem;
-  break-after: avoid;
 }
 
 #professional-experience .job-info {
@@ -140,6 +160,29 @@ section + section::before {
   margin-right: 1rem;
 }
 
+@media screen {
+  /**
+   * Hairline rule between sections
+   */
+  section + section::before {
+    content: "";
+    display: block;
+    width: 25rem;
+    margin: 1rem auto;
+    padding: 0;
+    border-top: 1px solid var(--text-color);
+  }  
+}
+
 @media print {
-  
+  /**
+   * Make a black-and-white layout for easy printing.
+   * Also adjust the font size downward: large text on websites is very
+   * fashionable, but looks weird in print.
+   */
+  :root {
+    --font-size: 10pt;
+    --text-color: black;
+    --background-color: white;
+  }
 }
