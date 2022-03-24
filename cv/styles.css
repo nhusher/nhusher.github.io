@@ -114,6 +114,14 @@ section > h2 {
   margin: 0;
 }
 
+#professional-experience h4 {
+  margin: 0 0 1rem;
+  text-transform: uppercase;
+}
+
+#professional-experience h3 .job-title {
+  font-weight: bolder;
+}
 #professional-experience h3 .employer {
   font-weight: 300;
   display: inline-block;

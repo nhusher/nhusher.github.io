@@ -11,6 +11,11 @@
 <body>
   <header>
     <h1>Nicholas Husher</h1>
+    <address>
+      <a href="mailto:nhusher@gmail.com">nhusher@gmail.com</a>
+      &bull;
+      <a href="tel:802-598-6715">802.598.6715</a>
+    </address>
     <ul class="important-sounding-descriptors">
       <li>Full Stack Developer</li>
       <li>Javascript Enthusiast</li>
@@ -29,24 +34,29 @@
     <h2>Skills</h2>
     <ul>
       <!-- NTS: the number of list items should divide by three. -->
-      <li>ES2022 / TypeScript</li>
-      <li>SPA application design</li>
-      <li>HTML5</li>
-      <li>CSS</li>
+      <li>ES 2022 / TypeScript</li>
+      <li>Single-page app design</li>
+      <li>HTML / CSS</li>
+
       <li>Clojure</li>
       <li>Node / npm</li>
       <li>React / React Native</li>
+
       <li>Redux / Redux Saga</li>
-      <li>Webpack</li>
-      <li>GraphQL</li>
+      <li>Frontend build tools</li>
+      <li>GraphQL / Apollo</li>
+
       <li>Git</li>
       <li>SQL</li>
-      <li>Docker</li>
+      <li>Docker / Compose</li>
+
       <li>Client-side security</li>
       <li>Functional programming</li>
       <li>Scrum / Kanban</li>
+
       <li>UNIX / OS X</li>
       <li>Microservices / REST</li>
+      <li>HTTP / WebSockets</li>
     </ul>
   </section>
   <section id="professional-experience">
@@ -63,10 +73,6 @@
             <time datetime="2015-01-05">January 2015</time> &ndash; Present
           </div>
           <p>
-            I have worked in various intermittent capacities for Faraday
-            since 2015, taking a full-time role as Frontend Lead in late 2020.
-          </p>
-          <p>
             Faraday provides AI-driven data science for companies that can't or
             don't want to set up their own in-house data science group. They use
             a flexible infrastructure to apply artificial intelligence to
@@ -74,11 +80,39 @@
             recommending the locations of new storefronts.
           </p>
           <p>
+            I have worked in various intermittent capacities for Faraday
+            since 2015, taking a full-time role as Frontend Lead in late 2020.
             As a small startup looking for a niche in the market, my role is
             multifaceted. My main responsibility is improving their self-service
             market analysis web application. I'm also involved in database
             design discussions, data security, and continuous integration.
           </p>
+          <h4>Selected projects</h4>
+          <ul>
+            <li>
+              Migrated a 30,000-line frontend application from Angular 1.x to
+              React. This reduced the number of state-related bugs in the UI
+              by embracing data immutability and functional programming styles.
+            </li>
+            <li>
+              Converted build tooling from Grunt/Gulp to Webpack, which opened
+              up better ways to compose code artefacts together. JS, CSS,
+              images. With webpack, assets could be split/combined as the use
+              case demanded, just by updating some configuration.
+            </li>
+            <li>
+              Built a new GraphQL API service from the ground up to better
+              serve the UI. This had the knock-on effect of reducing the amount
+              of manually-managed state in the frontend app, reducing the
+              surface area of state-related bugs.
+            </li>
+            <li>
+              Instituted strict security policies in the app. Content security
+              policy headers, in particular, reduce the ability for malicious
+              code to exfiltrate sensitive PII or HIPAA-protected data from
+              the frontend.
+            </li>
+          </ul>
         </article>
       </li>
       <li>
@@ -100,17 +134,30 @@
             online marketplace for farmers to sell their crops directly to
             food companies, rather than selling to grain clearing houses.
           </p>
-          <p>
-            I worked on a few different projects while at Indigo: The first
-            was a React Native version of the Indigo marketplace application,
-            designed to load faster and work better in areas with poor cellular
-            data availability; The second was leading a team to do
-            architectural cleanup of some low-level code in the Marketplace UI
-            application, which was dragging down developer productivity;
-            Finally, I worked on a team to provide an accessible, consistent,
-            and forward-looking UI component library for Indigo web
-            applications.
-          </p>
+          <h4>Selected projects</h4>
+          <ul>
+            <li>
+              Was the technical lead on a React Native version of Indigo's
+              Marketplace application. The React Native Marketplace was
+              designed to load faster and work better in areas with poor
+              internet accesss&mdash;like in the seat of a tractor in a
+              midwestern corn field.
+            </li>
+            <li>
+              I led a team to do architectural cleanup and developer experience
+              improvements. For example, we migrated across a couple major
+              Apollo Client versions, eliminated several common frontend
+              failure cases, reduced build times on our CI server, and cut out
+              unused legacy code.
+            </li>
+            <li>
+              Worked on a team of staff engineers to build an accessible,
+              consistent, forward-looking component library for building user
+              interfaces at Indigo. Part of this migration was deprecating
+              buggy and heavyweight material-ui components in favor of
+              home-grown implementations.
+            </li>
+          </ul>
         </article>
       </li>
       <li>
@@ -128,15 +175,24 @@
             Lola Travel was a startup that that built lightweight, user-focused
             travel software for small businesses.
           </p>
-          <p>
-            My role was to provide technical leadership and support on three 
-            React-based projects: A React Native mobile app that can be used to
-            book hotels and flights, a React web application that travel 
-            administrators within a company may use to track and manage
-            business trips that employees have booked, and a web application
-            that Lola agents use to provide support to the other two apps,
-            served by a GraphQL endpoint.
-          </p>
+          <h4>Selected projects</h4>
+          <ul>
+            <li>
+              Worked on a team to build the first iteration of Lola's mobile
+              application, built in React Native. The focus of the app was
+              low-friction signup and use, coupled with an AI-driven hotel
+              recommendation algorithm. I implemented a cross-platform form
+              focus management system, because focus management was poorly
+              defined in React Native at the time.
+            </li>
+            <li>
+              I was the technical lead on a web application that let admins
+              at a small business set booking criteria, which would inform
+              which hotels, flights, and car rentals would appear in the
+              mobile app. This project went through many iterations and
+              pivots as the startup attempted to find product-market fit.
+            </li>
+          </ul>
         </article>
       </li>
       <li>
