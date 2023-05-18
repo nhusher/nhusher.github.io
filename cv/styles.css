@@ -117,7 +117,7 @@ section > h2 {
 }
 
 #professional-experience ol > li {
-  break-inside: avoid-page
+  break-inside: avoid-page;
 }
 
 #professional-experience ol > li + li {
