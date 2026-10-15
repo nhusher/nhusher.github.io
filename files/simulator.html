@@ -66,6 +66,11 @@
   .x-theme p.brief { color: var(--muted); font-size: 12.5px; }
   .x-theme .k { font-size: 10.5px; text-transform: uppercase; letter-spacing: .1em; font-weight: 700; color: var(--muted); margin-right: 6px; }
   .x-theme p b { color: var(--text); }
+  .x-roomcard { display: block; text-decoration: none; color: var(--text2); font-size: 13.5px; }
+  .x-roomcard:hover { border-color: var(--accent2); }
+  .x-roomcard .n { display: inline-grid; place-items: center; width: 22px; height: 22px; border-radius: 999px; background: var(--muted); color: var(--bg); font-size: 11px; font-weight: 700; margin-right: 8px; vertical-align: middle; }
+  .x-roomcard b { color: var(--text); font-size: 16px; vertical-align: middle; }
+  .x-roomcard span:not(.n) { display: block; margin-top: 8px; }
 
   /* ---- anatomy ---- */
   .x-anat { display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr); gap: 14px; align-items: stretch; }
@@ -245,21 +250,21 @@
 
 <main class="x-wrap">
 
-<!-- =============================== 1 · WHAT IS A VIEWSPEC =============================== -->
-<section class="x-tab" id="tab-what">
-  <p class="x-room">Room 1 · Orientation</p>
-  <h2 class="x-h">A viewspec is the JSON document behind every W&amp;B workspace and report.</h2>
-  <p class="x-lede">It records which runs a page shows and how: the runs-table filters, grouping and sort, every panel and section, and the page's settings. Gorilla stores it as an opaque blob in <code>views.spec</code>; the browser normalizes it into a table of parts, edits those, and writes the whole document back. <b>It is flexible because nothing constrains it. It is a problem for the same reason.</b></p>
+<!-- =============================== 1 · THE BRIEF =============================== -->
+<section class="x-tab" id="tab-brief">
+  <p class="x-room">Room 1 · The brief</p>
+  <h2 class="x-h">Workspace Vantage: what the hackathon asked, and what this exhibit answers.</h2>
+  <p class="x-lede">Workspace Vantage was a hackathon project, October 13 to 15, 2026. The proposal asked two things of the viewspec data: how widely each workspace feature is used, and what a proposed limit would break, sized in workspaces, active workspaces, people and accounts. The app's events record which pages people open, not how those pages are configured, so both answers have to come from the stored documents. <b>Every room that follows is read from those 10.7 million documents.</b></p>
 
   <div class="x-section">
-    <h3>Hackathon context · Workspace Vantage, October 13 to 15, 2026</h3>
+    <h3>Three themes, one declared</h3>
     <div class="x-grid c3" id="x-themes">
       <div class="card x-theme">
         <span class="big">01</span>
         <div class="tag">01 · Moonshot</div>
         <h2>Pick Your Moon</h2>
         <p class="brief"><span class="k">Brief</span>Declare something the team believes is years away and land a working version in three days.</p>
-        <p><span class="k">Here</span>Our moon is a contract for the viewspec. Nothing checks the document on write today. The <b>86-definition schema</b> in this room was generated from the shape of every stored spec, and all <b>2,270</b> sampled large specs pass it. Validation on write and a versioned spec are the work that follows.</p>
+        <p><span class="k">Here</span>Our moon is a contract for the viewspec. Nothing checks the document on write today. The <b>86-definition schema</b> in <a href="#what">Room 2</a> was generated from the shape of every stored spec, and all <b>2,270</b> sampled large specs pass it. Validation on write and a versioned spec are the work that follows.</p>
       </div>
       <div class="card x-theme">
         <span class="big">02</span>
@@ -273,12 +278,33 @@
         <div class="tag">03 · Data · our theme</div>
         <h2>Mission Control</h2>
         <p class="brief"><span class="k">Brief</span>Use data to help people decide faster.</p>
-        <p><span class="k">Here</span>The proposal's problem statement is that a limit's blast radius could not be sized. <a href="#blast">Room 2</a> sizes it in workspaces, people and accounts. <a href="#sim">Room 3</a> does the same for cleanup: <b>584 to 598 GB</b> reclaimed under the recommended rules, and who loses data under each one.</p>
+        <p><span class="k">Here</span>The proposal's problem statement is that a limit's blast radius could not be sized. <a href="#blast">Room 3</a> sizes it in workspaces, people and accounts. <a href="#sim">Room 4</a> does the same for cleanup: <b>584 to 598 GB</b> reclaimed under the recommended rules, and who loses data under each one.</p>
       </div>
     </div>
   </div>
 
-  <div class="x-grid c6 x-section">
+  <div class="x-section">
+    <h3>The rooms</h3>
+    <div class="x-grid c3">
+      <a class="card x-roomcard" href="#what"><span class="n">2</span><b>What is a viewspec</b><span>The document behind every workspace and report: its anatomy, how it moves through the app, why it is flexible and unstructured, and where 789 GB go.</span></a>
+      <a class="card x-roomcard" href="#blast"><span class="n">3</span><b>Blast radius</b><span>Input a proposed limit, output what it costs: workspaces, active workspaces, people and accounts, by plan.</span></a>
+      <a class="card x-roomcard" href="#sim"><span class="n">4</span><b>Cleanup simulator</b><span>What deleting, resetting and pruning would reclaim, 584 to 598 GB on the recommended path, and who would notice.</span></a>
+    </div>
+  </div>
+
+  <ul class="x-foot">
+    <li>Theme names and descriptions paraphrase the "Themes" section of the hackathon brief; the team's declared theme is Mission Control. The two questions are the proposal's "Data for Adoption" and "Data for Blast Radius Calculator" sections.</li>
+    <li>Pipeline figures on the Escape Velocity card are from <code>viewspec-findings.md</code> in <code>~/Projects/vantage</code>.</li>
+  </ul>
+</section>
+
+<!-- =============================== 2 · WHAT IS A VIEWSPEC =============================== -->
+<section class="x-tab" id="tab-what" hidden>
+  <p class="x-room">Room 2 · Orientation</p>
+  <h2 class="x-h">A viewspec is the JSON document behind every W&amp;B workspace and report.</h2>
+  <p class="x-lede">It records which runs a page shows and how: the runs-table filters, grouping and sort, every panel and section, and the page's settings. Gorilla stores it as an opaque blob in <code>views.spec</code>; the browser normalizes it into a table of parts, edits those, and writes the whole document back. <b>It is flexible because nothing constrains it. It is a problem for the same reason.</b></p>
+
+  <div class="x-grid c6">
     <div class="card kpi"><div class="l">Specs</div><div class="v">10.7M</div><div class="s">workspaces and reports, 6 view types in scope (15 stored)</div></div>
     <div class="card kpi"><div class="l">Stored</div><div class="v">789 GB</div><div class="s">524 GB MySQL <code>views</code> table · 265 GB object storage</div></div>
     <div class="card kpi"><div class="l">Largest spec</div><div class="v">193 MB</div><div class="s">the write cap is 128 MiB; 63 specs sit within 10% of it</div></div>
@@ -1124,14 +1150,13 @@ const sort    = usePart(runSet.sortRef);</pre>
   <ul class="x-foot">
     <li>Counts are from every stored spec of the six in-scope types: 10,719,382 in MySQL (BigQuery mirror of the <code>views</code> table), 9,838 streamed from object storage, 7 that are not valid JSON, 3 with no spec anywhere.</li>
     <li>"Bytes the app never reads" is what conforming each spec to the lean schema removes. It is exact for every MySQL spec (BigQuery for specs up to 4 MB, local for the 15,355 larger ones) and estimated from a 278-spec sample for object storage.</li>
-    <li>The theme cards paraphrase the "Themes" section of the hackathon brief; the team's declared theme is Mission Control. Pipeline figures are from <code>viewspec-findings.md</code> (sections on method and pass 3).</li>
     <li>Sources: <code>findings.md</code>, <code>viewspec-findings.md</code>, <code>schema/out/findings.md</code>, <code>schema/out/prune_report.md</code> in <code>~/Projects/vantage</code>.</li>
   </ul>
 </section>
 
-<!-- =============================== 2 · BLAST RADIUS =============================== -->
+<!-- =============================== 3 · BLAST RADIUS =============================== -->
 <section class="x-tab" id="tab-blast" hidden>
-  <p class="x-room">Room 2 · Blast radius</p>
+  <p class="x-room">Room 3 · Blast radius</p>
   <h2 class="x-h">Input a proposed limit. Output what it costs.</h2>
   <p class="x-lede">Some workspace features are expensive by construction: filtering or grouping by a summary metric cannot use an index. Capping them would make the app faster, if we knew who we would break. Every multi-run workspace in MT SaaS is fingerprinted, so the distribution is known and a cap can be priced in workspaces, people and accounts.</p>
 
@@ -1174,9 +1199,9 @@ const sort    = usePart(runSet.sortRef);</pre>
   </ul>
 </section>
 
-<!-- =============================== 3 · CLEANUP SIMULATOR =============================== -->
+<!-- =============================== 4 · CLEANUP SIMULATOR =============================== -->
 <section class="x-tab" id="tab-sim" hidden>
-  <p class="x-room">Room 3 · Cleanup simulator</p>
+  <p class="x-room">Room 4 · Cleanup simulator</p>
   <h2 class="x-h">What deleting, resetting and pruning would reclaim, and who would notice.</h2>
   <p class="x-lede">Every rule below was scored against all 10.7M specs: deletion by project state and plan, a reset that keeps every configured panel and drops the ones auto-generation recreates, and pruning to the lean schema. Totals are exact aggregates except object-storage pruning, which is estimated from a sample. The recommended path frees <b>584 GB</b>; adding run views makes it <b>598 GB</b>, 73% of the table.</p>
   <div class="simmain">
@@ -1737,10 +1762,10 @@ const esc = s => String(s).replace(/[&<>"]/g, c => ({'&': '&amp;', '<': '&lt;', 
 const CA = '#8b5cf6', CB = '#c2410c', CC = '#30a46c';
 
 // ---------- tabs ----------
-const TABS = [['what', 'What is a viewspec'], ['blast', 'Blast radius'], ['sim', 'Cleanup simulator']];
+const TABS = [['brief', 'The brief'], ['what', 'What is a viewspec'], ['blast', 'Blast radius'], ['sim', 'Cleanup simulator']];
 const drawn = {};
 function show(id) {
-  if (!TABS.some(t => t[0] === id)) id = 'what';
+  if (!TABS.some(t => t[0] === id)) id = TABS[0][0];
   TABS.forEach(([t]) => { $('tab-' + t).hidden = t !== id; });
   document.querySelectorAll('#x-nav button[data-tab]').forEach(b => b.classList.toggle('on', b.dataset.tab === id));
   try { history.replaceState(null, '', '#' + id); } catch (e) { /* jsdom refuses on file: URLs; harmless */ }
@@ -1903,7 +1928,7 @@ buildBlast();
 window.addEventListener('resize', () => { if (!$('tab-blast').hidden) drawBlast(); });
 
 // ---------- start ----------
-show(location.hash.slice(1) || 'what');
+show(location.hash.slice(1) || TABS[0][0]);
 }
 </script>
 </body>
